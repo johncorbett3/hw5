@@ -69,5 +69,32 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
+  
+let allRidesButton = document.querySelector("#all-filter")
+allRidesButton.addEventListener("click", async function(event) {
+  event.preventDefault()
+  let rideType = "All Rides"
+
+  let response = await fetch(`https://kiei451.com/api/rides.json`)
+  let json = await response.json()
+
+  console.dir(json)
+  
+  for (let i = 0; i < json.length; i++) {
+    // levelOfService(json[i])
+    renderRides(json)
+  }
+
+})
+
+let nooberPurpleButton = document.querySelector("#noober-purple-filter")
+nooberPurpleButton.addEventListener("click", function(event) {
+  event.preventDefault()
+  let rideType = "Noober Purple"
+  console.log(rideType)
+
+})
+
+
 })
 
